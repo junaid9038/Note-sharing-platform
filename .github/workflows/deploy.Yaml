@@ -18,9 +18,9 @@ permissions:
 
 # env: Defines environment variables to be used throughout the workflow.
 env:
-  PROJECT_ID: shahi-notes
+  PROJECT_ID: "note-sharing-390521"
   IMAGE_NAME: "Shahi-Notes-image"
-  CONTAINER_NAME: "shahi-notes"
+  CONTAINER_NAME: "shahi-notes-container"
   REGION: "asia-south1"
   SERVICE_NAME: "Shahi_Notes-service"
   REPOSITORY_NAME: "shahi-notes"
@@ -82,7 +82,7 @@ jobs:
         uses: google-github-actions/setup-gcloud@master
         with:
           project_id: ${{ env.PROJECT_ID }}
-          service_account_email: "mdahsanali709@gmail.com"
+          service_account_email: "note-sharing@note-sharing-390521.iam.gserviceaccount.com"
           service_account_key: ${{ secrets.SECRET_KEY }}
           export_default_credentials: true
       
