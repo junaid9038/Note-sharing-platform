@@ -23,7 +23,7 @@ env:
   CONTAINER_NAME: your-container-name
   REGION: your-gcp-region
   SERVICE_NAME: your-service-name
-  PORT: 3000
+  PORT: 8000
   TAG: ${{ github.sha }}
 
 # jobs: Defines the work to be done by this workflow.
@@ -41,11 +41,24 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '14.x'
+          node-version: 'lts'
       
       - name: Install dependencies
         run: |
           npm ci
+
+      # - name: Connect to MongoDB
+      #   run: |
+      #     npm install --save mongodb
+      #     const MongoClient = require('mongodb').MongoClient;
+
+      #     MongoClient.connect(process.env.mongoUrl, function(err, client) {
+      #       if (err) {
+      #         console.error('Error connecting to MongoDB:', err);
+      #     } else {
+      #       console.log('Connected to MongoDB');
+      #     }
+      #     })
           
       - name: Run tests
         run: |
