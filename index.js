@@ -40,8 +40,6 @@ app.use(express.static('./assets'));
 
 
 
-
-
 app.listen(8000,function(err){
     if(err){
         console.log('error in the running  surver ',err); return
