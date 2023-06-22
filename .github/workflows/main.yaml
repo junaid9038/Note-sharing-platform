@@ -101,27 +101,27 @@ jobs:
 
   
   Continuous-Deployment:
-  needs: build-and-push-image
-  runs-on: self-hosted
-  steps:
-    - name: Pull Latest Docker Image from artifact-registry
-      run: |
-        docker pull asia-south1-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.IMAGE_NAME }}/${{ env.TAG }}
+    needs: build-and-push-image
+    runs-on: self-hosted
+    steps:
+      - name: Pull Latest Docker Image from artifact-registry
+        run: |
+          docker pull asia-south1-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.IMAGE_NAME }}/${{ env.TAG }}
 
 
-    - name: Stop and Remove Previous Container
-      run: |
-        docker stop ${{ env.CONTAINER_NAME }} || true
-        docker rm ${{ env.CONTAINER_NAME }} || true
+      - name: Stop and Remove Previous Container
+        run: |
+          docker stop ${{ env.CONTAINER_NAME }} || true
+          docker rm ${{ env.CONTAINER_NAME }} || true
 
-    - name: Run Docker Image
-      run: |
-        docker run -dp ${{ env.PORT }}:${{ env.PORT }} --name ${{ env.CONTAINER_NAME }} gcr.io/${{ env.PROJECT_ID }}/${{ env.IMAGE_NAME }}:${{ env.TAG }}
+      - name: Run Docker Image
+        run: |
+          docker run -dp ${{ env.PORT }}:${{ env.PORT }} --name ${{ env.CONTAINER_NAME }} gcr.io/${{ env.PROJECT_ID }}/${{ env.IMAGE_NAME }}:${{ env.TAG }}
 
-    - name: Clean Previous Images and Containers
-      run: |
-        docker image prune -f
-        docker container prune -f
+      - name: Clean Previous Images and Containers
+        run: |
+          docker image prune -f
+          docker container prune -f
 
   #  The job involved 
   #   - pulling the latest Docker image, 
