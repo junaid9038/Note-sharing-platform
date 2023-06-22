@@ -1,7 +1,7 @@
 # This code is an example GitHub Actions workflow for deploying a Node.js/Express application to Google Cloud Platform (GCP) using a Docker-compose.
 
 # name: The name of the workflow.
-name: Deploy to GCP
+name: Deploy to Google cloud platform
 
 # on: Indicates when this workflow should run. In this case, it runs when a commit is pushed to the main branch.
 on:
@@ -151,6 +151,3 @@ jobs:
 # run: Pushes the Docker image to the Google Container Registry (GCR) using the gcloud CLI. This step also tags the image as the latest version.
 # uses: An action that deploys the app to Cloud Run using the Docker image.
 # with: Defines the inputs to the cloud-run-deploy action, including the Cloud Run service name, the Docker image used to deploy the app, the GCP region where the app is deployed, and the no-traffic flag to ensure the newly deployed revision does not receive any traffic until explicitly promoted.
-
-
- 
