@@ -68,6 +68,7 @@ module.exports.logout = function(req,res){
 }
 
 // fastsms Api key = 7IanZUqREJtcVrlbwDjiXG0M1d8kLQshfg2vWom3eSYpxzAyOFxko5Whdsnau71NMqrwSX39YDVb0Iy8
+//XeMQl3KiIjcBt1TxdUFJ4bny9Dg5ARPGCzpVOwaqo8hEkWufNYvxH2cJgrVjpnlt3RKG8DPYMbym6awC
 
 module.exports.sendOtp = async function(req,res){
     
@@ -81,18 +82,17 @@ module.exports.sendOtp = async function(req,res){
     //   }
     console.log(mobile_number);
     const options = {
-    authorization :'7IanZUqREJtcVrlbwDjiXG0M1d8kLQshfg2vWom3eSYpxzAyOFxko5Whdsnau71NMqrwSX39YDVb0Iy8',
+    authorization :'XeMQl3KiIjcBt1TxdUFJ4bny9Dg5ARPGCzpVOwaqo8hEkWufNYvxH2cJgrVjpnlt3RKG8DPYMbym6awC',
      message : `Your OTP for sahiNotes.com is ${otp}` ,
      numbers :[mobile_number]
     } 
   try {
     const output = await fast2sms.sendMessage(options); //Asynchronous Function.
   if(output){
-    console.log("message sent successfuly");
+    console.log(output);
     return res.json({message:'msg  send'});
-
-
   }
+
   } catch (error) {
     
      console.log('Error in sending sms',error);

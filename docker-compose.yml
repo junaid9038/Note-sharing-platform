@@ -1,3 +1,26 @@
+# version: '3'
+
+# services:
+  
+#   application:
+#     build: .
+#     environment:
+#       - NODE_ENV=production
+#       - MONGODB_URI=${MONGO_DB_URL}
+#     ports:
+#       - "8000:8000"
+#     depends_on:
+#       - mongodb
+
+
+#   mongodb:
+#     image: mongo:latest
+#     container_name: mongodb
+#     environment:
+#       MONGO_INITDB_DATABASE: sahinotes_devlopment
+#     ports:
+#       - "27017:27017"
+
 version: '3'
 
 services:
@@ -6,7 +29,7 @@ services:
     build: .
     environment:
       - NODE_ENV=production
-      - MONGODB_URI=${MONGO_DB_URL}
+      - MONDODB_URI="mongodb://127.0.0.1:27017/sahinotes_devlopment"
     ports:
       - "8000:8000"
     depends_on:
@@ -17,6 +40,6 @@ services:
     image: mongo:latest
     container_name: mongodb
     environment:
-      MONGO_INITDB_DATABASE: sahinotes_devlopment
+      MONGO_INITDB_DATABASE: "sahinotes_devlopment"
     ports:
       - "27017:27017"
